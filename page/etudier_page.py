@@ -6,7 +6,7 @@ class EtudierPage(BasePage):
     page_name = "EtudierPage"
     contact_button_1 = None
 
-    def initialize_page_elements(self):
+    def _initialize_page_elements(self):
         # locator_key is the same value in .json files
         self.contact_button_1 = BasePageElement(self.driver, self._element_locator(locator_key="contact_button_1"))
 

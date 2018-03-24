@@ -12,7 +12,8 @@ class GlobalVariables(object):
     GLOBAL_USER_DATA = json.load(open(PROJECT_PATH + "/test_data/user_data.json"))
 
     # variables initialize before test session starts
-    WORLD = ""
+    ENVIRONMENT = ""
+    DEBUG_ENABLE = True
     SESSION_HOST_DATA = {}
     SESSION_PAGE_DATA = {}
     SESSION_USER_DATA = {}
@@ -23,8 +24,9 @@ class GlobalVariables(object):
     MODULE_PAGE_DATA = {}
     MODULE_USER_DATA = {}
 
-    def initialize_test_session(self, environment):
-        self.WORLD = environment
+    def initialize_test_session(self, environment, debug_enable):
+        self.ENVIRONMENT = environment
+        self.DEBUG_ENABLE = debug_enable
         self.SESSION_HOST_DATA = self.GLOBAL_HOST_DATA[environment]
         self.SESSION_PAGE_DATA = self.GLOBAL_PAGE_DATA
         self.SESSION_USER_DATA = self.GLOBAL_USER_DATA[environment]

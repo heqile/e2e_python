@@ -5,15 +5,16 @@ import pytest
 
 def pytest_addoption(parser):
     """Parse pytest arguments"""
-    parser.addoption("--world", action="store", default="PROD")
+    parser.addoption("--environment", action="store", default="PROD")
     parser.addoption("--site", action="store", default="")
+    parser.addoption("--debug_mode", action="store_true", default=True)
 
 
 @pytest.fixture(scope="session", autouse=True)
 def initialize_test_session(request):
     """Initialize test data before all tests"""
-    GLOBAL_VARIABLES.initialize_test_session(request.config.option.world)
-    print("Test for world : {world}".format(world=request.config.option.world))
+    GLOBAL_VARIABLES.initialize_test_session(request.config.option.environment, request.config.option.debug_mode)
+    print("Test for world : {environment}".format(environment=request.config.option.environment))
 
 
 @pytest.fixture(scope="module", autouse=True)
@@ -23,7 +24,7 @@ def initialize_test_module(request):
     GLOBAL_VARIABLES.initialize_test_module(site)
     enable_sites = request.config.option.site.split()
     # enable/disable test
-    if enable_sites is not None and site not in enable_sites:
+    if len(enable_sites) != 0 and site not in enable_sites:
         pytest.skip("Tests disabled for site : {site} ".format(site=site))
     else:
         print("Tests start for site : {site} ".format(site=site))

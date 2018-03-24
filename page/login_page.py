@@ -10,7 +10,8 @@ class LoginPage(BasePage):
     login_input = None
     password_input = None
 
-    def initialize_page_elements(self):
+    def _initialize_page_elements(self):
+        """"reload method"""
         # locator_key is the same value in .json files
         self.emprunter_menu = BasePageElement(self.driver, self._element_locator(locator_key="emprunter_menu"))
         self.etudier_entry = BasePageElement(self.driver, self._element_locator(locator_key="etudier_entry"))
@@ -23,5 +24,5 @@ class LoginPage(BasePage):
         self.action_chain.click().perform()
 
     def set_login_password(self):
-        self.login_input.set_value("test")
-        self.password_input.set_value("1234")
+        self.login_input.set_value(self.user_data["login"])
+        self.password_input.set_value(self.user_data["password"])

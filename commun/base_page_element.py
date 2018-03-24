@@ -8,6 +8,8 @@ class BasePageElement(object):
         self.locator = locator
 
     def get_element(self):
+        if self.locator is None:
+            return None
         driver = self.driver
         element = WebDriverWait(driver, 20).until(
             lambda driver: driver.find_element(*self.locator)
@@ -15,6 +17,8 @@ class BasePageElement(object):
         return element
 
     def set_value(self, value):
+        if self.locator is None:
+            return None
         driver = self.driver
         element = WebDriverWait(driver, 20).until(
             lambda driver: driver.find_element(*self.locator)
@@ -22,17 +26,17 @@ class BasePageElement(object):
         element.clear()
         element.send_keys(value)
 
-    def __set__(self, instance, value):
-        driver = self.driver
-        element = WebDriverWait(driver, 20).until(
-            lambda driver: driver.find_element(*self.locator)
-        )
-        element.clear()
-        element.send_keys(value)
-
-    def __get__(self, instance, owner):
-        driver = self.driver
-        element = WebDriverWait(driver, 20).until(
-            lambda driver: driver.find_element(*self.locator)
-        )
-        return element
+    # def __set__(self, instance, value):
+    #     driver = self.driver
+    #     element = WebDriverWait(driver, 20).until(
+    #         lambda driver: driver.find_element(*self.locator)
+    #     )
+    #     element.clear()
+    #     element.send_keys(value)
+    #
+    # def __get__(self, instance, owner):
+    #     driver = self.driver
+    #     element = WebDriverWait(driver, 20).until(
+    #         lambda driver: driver.find_element(*self.locator)
+    #     )
+    #     return element

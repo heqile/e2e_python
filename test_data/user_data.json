@@ -3,7 +3,13 @@
     "PROD": {
         "CM": {
             "login": "Test",
-            "password": "xxxxxx"
+            "password": "xxxxxx",
+            "wrong_login":"groot"
+        },
+        "CIC": {
+            "login": "Test2",
+            "password": "xxxxxx2",
+            "wrong_login":"grot"
         }
     }
 

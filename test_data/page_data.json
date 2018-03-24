@@ -15,5 +15,14 @@
                 "contact_button_1": ["id", "bt-hb0"]
             }
         }
+    },
+    "CIC": {
+        "LoginPage": {
+            "path": "/fr/authentification.html",
+            "locators": {
+                "login_input": ["id", "_userid"],
+                "password_input": ["id", "_pwduser"]
+            }
+        }
     }
 }

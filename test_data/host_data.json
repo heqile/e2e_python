@@ -2,7 +2,16 @@
     "_comment": "cookie ...",
     "PROD": {
         "CM": {
-            "host": "https://www.creditmutuel.fr"
+            "host": "https://www.creditmutuel.fr",
+            "cookie_list": {
+                "cookie_1": {
+                    "name": "debug_bar",
+                    "value": "1"
+                }
+            }
+        },
+        "CIC": {
+            "host": "https://www.cic.fr"
         }
     }
 }

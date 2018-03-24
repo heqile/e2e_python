@@ -1,4 +1,3 @@
-from commun.base_page_element import BasePageElement
 from selenium.webdriver.common.action_chains import ActionChains
 from test_data.globals import GLOBAL_VARIABLES
 

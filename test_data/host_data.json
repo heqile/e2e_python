@@ -1,0 +1,8 @@
+{
+    "_comment": "cookie ...",
+    "PROD": {
+        "CM": {
+            "host": "https://www.creditmutuel.fr"
+        }
+    }
+}

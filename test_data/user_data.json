@@ -1,0 +1,10 @@
+{
+    "_comment": "comment text goes here...",
+    "PROD": {
+        "CM": {
+            "login": "Test",
+            "password": "xxxxxx"
+        }
+    }
+
+}

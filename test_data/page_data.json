@@ -1,0 +1,19 @@
+{
+    "CM": {
+        "LoginPage": {
+            "path": "/fr/authentification.html",
+            "locators": {
+                "emprunter_menu": ["link text", "Emprunter"],
+                "etudier_entry": ["partial link text", "tudier en France et"],
+                "login_input": ["id", "_userid"],
+                "password_input": ["id", "_pwduser"]
+            }
+        },
+        "EtudierPage": {
+            "path": "/fr/particuliers/emprunter/financer-vos-etudes.html",
+            "locators": {
+                "contact_button_1": ["id", "bt-hb0"]
+            }
+        }
+    }
+}

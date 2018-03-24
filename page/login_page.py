@@ -1,19 +1,27 @@
 from commun.base_page import BasePage
 from commun.base_page_element import BasePageElement
-from selenium.webdriver.common.by import By
-
-
-class LoginPageLocators(object):
-    EMPRUNTER_MENU = (By.LINK_TEXT, "Emprunter")
-    ETUDIER_ENTRY = (By.PARTIAL_LINK_TEXT, "tudier en France et")
 
 
 class LoginPage(BasePage):
-    url = "https://www.creditmutuel.fr/fr/authentification.html"
-    emprunter_menu = BasePageElement(LoginPageLocators.EMPRUNTER_MENU)
-    etudier_entry = BasePageElement(LoginPageLocators.ETUDIER_ENTRY)
+
+    page_name = "LoginPage"
+    emprunter_menu = None
+    etudier_entry = None
+    login_input = None
+    password_input = None
+
+    def initialize_page_elements(self):
+        # locator_key is the same value in .json files
+        self.emprunter_menu = BasePageElement(self.driver, self._element_locator(locator_key="emprunter_menu"))
+        self.etudier_entry = BasePageElement(self.driver, self._element_locator(locator_key="etudier_entry"))
+        self.login_input = BasePageElement(self.driver, self._element_locator(locator_key="login_input"))
+        self.password_input = BasePageElement(self.driver, self._element_locator(locator_key="password_input"))
 
     def click_etudier_entry(self):
-        self.action_chain.move_to_element(self.emprunter_menu).perform()
-        self.action_chain.move_to_element(self.etudier_entry).perform()
+        self.action_chain.move_to_element(self.emprunter_menu.get_element()).perform()
+        self.action_chain.move_to_element(self.etudier_entry.get_element()).perform()
         self.action_chain.click().perform()
+
+    def set_login_password(self):
+        self.login_input.set_value("test")
+        self.password_input.set_value("1234")

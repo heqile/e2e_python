@@ -28,6 +28,14 @@ class SiteTest(E2ETestCase):
     #     login_page.get()
     #     self.assertTrue(login_page.is_current_page())
 
+    @pytest.mark.third
+    def test_click_contact_button(self):
+        driver = self.webdriver
+        etudier_page = EtudierPage(driver)
+
+        etudier_page.get()
+        etudier_page.click_contact_button_1()
+
 
 if __name__ == "__main__":
     unittest.main()

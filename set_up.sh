@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+chmod 755 create_page.sh
+chmod 755 create_test.sh
 virtualenv .venv
 source .venv/bin/active
 pip insatll --upgrade pip

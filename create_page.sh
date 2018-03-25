@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
+if [ -z $1 ]; then
+    echo "Example: ./create_page.sh page_name"
+    exit 0
+fi
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 cd page
-class_name=$1
-file_name="$class_name.py"
+file_name="$1.py"
 if [ -e $file_name ]; then
   echo "File $file_name already exists!"
 else
@@ -15,8 +19,8 @@ echo "from commun.base_page import BasePage" >> $file_name
 echo "from commun.base_page_element import BasePageElement" >> $file_name
 echo "" >> $file_name
 echo "" >> $file_name
-echo "class $class_name(BasePage):" >> $file_name
-echo "    page_name = \"$class_name\"" >> $file_name
+echo "class ClassName(BasePage):" >> $file_name
+echo "    page_name = \"$1\"" >> $file_name
 echo "    page_element = None" >> $file_name
 echo "" >> $file_name
 echo "    def initialize_page_elements(self):" >> $file_name

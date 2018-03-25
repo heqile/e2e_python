@@ -1,5 +1,4 @@
 from test_data.globals import GLOBAL_VARIABLES
-from selenium import webdriver
 import pytest
 
 
@@ -30,14 +29,8 @@ def initialize_test_module(request):
         print("Tests start for site : {site} ".format(site=site))
 
 
-@pytest.fixture(scope="module", autouse=True)
-def web_driver(request):
-    """Create webdriver instance which used for current test module"""
-    options = webdriver.ChromeOptions()
-    options.add_argument("--start-maximized")
-    driver = webdriver.Chrome(options=options)
-
-    def close_driver():
-        driver.close()
-    request.addfinalizer(close_driver)
-    return driver
+@pytest.fixture
+def chrome_options(chrome_options):
+    # chrome_options.add_extension('/path/to/extension.crx')
+    chrome_options.add_argument('--start-maximized')
+    return chrome_options

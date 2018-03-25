@@ -35,8 +35,11 @@ class BasePage(object):
             self.driver.add_cookie(cookie_debug)
             self.driver.get(self.url)
 
-    def get_url(self):
+    def _get_url(self):
         return self.url
+
+    def _get_cookies(self):
+        return self.driver.get_cookies()
 
     def _initialize_page_elements(self):
         """reload method"""

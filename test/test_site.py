@@ -1,20 +1,19 @@
 from page.etudier_page import EtudierPage
 from page.login_page import LoginPage
-import pytest
 
 # site_key is the same value in .json files
 site = "CM"
 
 
-def test_login(web_driver):
-    login_page = LoginPage(web_driver)
+def test_login(selenium):
+    login_page = LoginPage(selenium)
     login_page.get()
     assert login_page.is_current_page()
 #
 #
-# def test_etudier_menu(web_driver):
-#     login_page = LoginPage(web_driver)
-#     etudier_page = EtudierPage(web_driver)
+# def test_etudier_menu(selenium):
+#     login_page = LoginPage(selenium)
+#     etudier_page = EtudierPage(selenium)
 #
 #     login_page.get()
 #     login_page.set_login_password()
@@ -23,10 +22,21 @@ def test_login(web_driver):
 #     assert etudier_page.is_current_page()
 #
 #
-# def test_click_contact_button(web_driver):
-#     etudier_page = EtudierPage(web_driver)
-#
-#     etudier_page.get()
-#     etudier_page.click_contact_button_1()
+def test_click_contact_button(selenium):
+    etudier_page = EtudierPage(selenium)
+
+    etudier_page.get()
+    etudier_page.click_contact_button_1()
 
 
+from page.test_page import TestPage
+
+
+# site_key is the same value in .json files
+site = "SITE"
+
+
+def test_login(selenium):
+    login_page = LoginPage(selenium)
+    login_page.get()
+    assert login_page.is_current_page()

@@ -27,16 +27,3 @@ def test_click_contact_button(selenium):
 
     etudier_page.get()
     etudier_page.click_contact_button_1()
-
-
-from page.test_page import TestPage
-
-
-# site_key is the same value in .json files
-site = "SITE"
-
-
-def test_login(selenium):
-    login_page = LoginPage(selenium)
-    login_page.get()
-    assert login_page.is_current_page()

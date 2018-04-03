@@ -16,8 +16,11 @@ class BasePage(object):
         else:
             self.site = GLOBAL_VARIABLES.SITE
 
-        self.url = GLOBAL_VARIABLES.SESSION_HOST_DATA[self.site]["host"] + GLOBAL_VARIABLES.SESSION_PAGE_DATA[self.site][self.page_name]["path"]
-        self.user_data = GLOBAL_VARIABLES.SESSION_USER_DATA[self.site]
+        # self.url = GLOBAL_VARIABLES.SESSION_HOST_DATA[self.site]["host"] + GLOBAL_VARIABLES.SESSION_PAGE_DATA[self.site][self.page_name]["path"]
+        self.url = GLOBAL_VARIABLES.SITE_DATA.get_host() + GLOBAL_VARIABLES.SITE_DATA.get_page(self.page_name).get_path()
+
+        # self.user_data = GLOBAL_VARIABLES.SESSION_USER_DATA[self.site]
+        self.user_data = GLOBAL_VARIABLES.SITE_DATA.get_user_data()
         self._initialize_page_elements()
 
     def is_current_page(self):
@@ -47,10 +50,13 @@ class BasePage(object):
 
     def _element_locator(self, locator_key):
         try:
-            return GLOBAL_VARIABLES.SESSION_PAGE_DATA[self.site][self.page_name]["locators"][locator_key]
+            from selenium.webdriver.common.by import By
+            # return GLOBAL_VARIABLES.SESSION_PAGE_DATA[self.site][self.page_name]["locators"][locator_key]
+            return GLOBAL_VARIABLES.SITE_DATA.get_page(self.page_name).get_locator(locator_key)
         except:
             # if locator not exist in current page
             return None
 
     def _add_cookie(self, cookie_name):
-        self.driver.add_cookie(GLOBAL_VARIABLES.SESSION_HOST_DATA[self.site]["cookie_list"][cookie_name])
+        # self.driver.add_cookie(GLOBAL_VARIABLES.SESSION_HOST_DATA[self.site]["cookie_list"][cookie_name])
+        self.driver.add_cookie(GLOBAL_VARIABLES.SITE_DATA.get_cookie(cookie_name))

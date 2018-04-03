@@ -7,7 +7,17 @@
                 "etudier_entry": ["partial link text", "tudier en France et"],
                 "login_input": ["id", "_userid"],
                 "password_input": ["id", "_pwduser"]
+            },
+            "selects": {
+                "test": {
+                    "entry": "test",
+                    "options" : {
+                        "option_name1": ["a", "b"],
+                        "option_name2": ["a", "b"]
+                    }
+                }
             }
+
         },
         "EtudierPage": {
             "path": "/fr/particuliers/emprunter/financer-vos-etudes.html",

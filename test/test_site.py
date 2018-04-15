@@ -27,7 +27,9 @@ def test_etudier_menu(selenium):
 
 
 def test_click_contact_button(selenium):
+    log.set_up_log_list()
     etudier_page = EtudierPage(selenium)
 
     etudier_page.get()
     etudier_page.click_contact_button_1()
+    log.add_log_point("click contact button", selenium)

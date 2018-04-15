@@ -1,4 +1,5 @@
 from test_data.globals import GLOBAL_VARIABLES
+from datetime import datetime
 
 
 class Log(object):
@@ -32,7 +33,14 @@ class Log(object):
 
     def _gather_html(self, driver):
         try:
-            self.html = driver.page_source
+            if driver.page_source != '':
+                file_path = '{root}/assets/{filename}.html'.format(root=GLOBAL_VARIABLES.PROJECT_PATH,
+                                                                   filename=datetime.now().strftime('%Y%m%d%H%M%S%f'))
+                with open(file_path, 'w') as f:
+                    f.write(driver.page_source.encode('utf8'))
+                self.html = file_path
+            else:
+                self.html = 'Empty html.'
         except Exception as e:
             self.error = 'WARNING: Failed to gather HTML: {0}'.format(e)
             return

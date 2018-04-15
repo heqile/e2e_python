@@ -42,14 +42,13 @@ def pytest_selenium_runtest_makereport(item, report, summary, extra):
     # remove summary to avoid pytest-selenium add summary again
     # no., desciption, url, screenshot, (html?)
 
-    for item in GLOBAL_VARIABLES.LOG_ASSETS:
-        if item:
-            description = item.description
-            log = ''
-            if item.error != '':
-                log = item.error
-            else:
-                log = 'url: {url} \n' .format(url=item.url)
-                if item.screenshot:
-                    extra.append(pytest_html.extras.image(item.screenshot, description))
-            report.sections.append((description, log))
+    for item in GLOBAL_VARIABLES.LOG_ASSETS :
+        description = item.description
+        log = ''
+        if item.error != '':
+            log = item.error
+        else:
+            log = 'url: {url} \nhtml: {html}\n' .format(url=item.url, html=item.html)
+            if item.screenshot:
+                extra.append(pytest_html.extras.image(item.screenshot, description))
+        report.sections.append((description, log))

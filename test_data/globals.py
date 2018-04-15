@@ -29,6 +29,8 @@ class GlobalVariables(object):
     GLOBAL_DATA = None  # type: GlobalData
     SITE_DATA = None  # type: SiteData
 
+    LOG_ASSETS = []
+
     def initialize_test_session(self, environment, debug_enable):
         self.ENVIRONMENT = environment
         self.DEBUG_ENABLE = debug_enable
